@@ -102,6 +102,22 @@ class Producto {
         }
     }
 
+    async getByIndex(index) {
+        try {
+            const productos = await fs.promises.readFile(this.rutaArchivo, 'utf-8');
+            if (productos === "") {
+                return "Archivo vacio"
+            } else {
+                arrayProductos = JSON.parse(productos)
+                     
+                        return arrayProductos[index] 
+            }
+        } catch (error) {
+            console.log(error.message)
+        }
+
+    }
+
 }
 
 module.exports = Producto;

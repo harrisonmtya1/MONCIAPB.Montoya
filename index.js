@@ -11,9 +11,27 @@ app.listen(PORT,()=>{
 
 
 app.get("/productos",(req,res)=>{
-    res.send("Hola esta es una modificacion")
-})
+    const producto=new Producto("./archivo.txt")
+    let resultado= producto.getAll()
+    resultado.then(val=> res.send({val}))
+    
+    })
 
 app.get("/productoRandom",(req,res)=>{
-    res.send("Hola esta es una modificacion")
+    let max=0
+    let min=0
+    let indexAleatorio=0
+    const producto=new Producto("./archivo.txt")
+    let resultado= producto.getAll()
+    resultado.then(val=> {
+        max=val.length 
+        indexAleatorio= Math.floor(Math.random()* max)
+        console.log(indexAleatorio)
+    })
+    let resultadoAleatorio=producto.getByIndex(indexAleatorio)
+    resultadoAleatorio.then(val=>{
+        res.send({val})
+    })
+
+    
 })

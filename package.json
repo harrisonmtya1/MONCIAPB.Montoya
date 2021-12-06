@@ -1,0 +1,22 @@
+{
+  "name": "monciapb.montoya",
+  "version": "1.0.0",
+  "description": "Desarrollo BackEnd",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harrisonmtya1/MONCIAPB.Montoya.git"
+  },
+  "author": "Harrison Montoya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/harrisonmtya1/MONCIAPB.Montoya/issues"
+  },
+  "homepage": "https://github.com/harrisonmtya1/MONCIAPB.Montoya#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

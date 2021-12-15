@@ -4,25 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./index.css" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
-    <form method="post">
-         <div>
+    <form method="post" action="api/productos">
+        <div><h3>Formulario</h3></div>
+         <div class="div__campos">
              <label>Nombre</label>
-             <input type="text">
+             <input type="text" name="nombre">
          </div>
-         <div>
+         <div class="div__campos">
             <label>Descripcion</label>
-            <input type="text">
+            <input type="text" name="descripcion">
          </div>
-         <div>
+         <div class="div__campos">
             <label>Precio</label>
-            <input type="number">
+            <input type="number" name="precio">
+         </div>
+         <div class="div__campos">
+            <label>Imagen</label>
+            <input type="text" name="imagen">
          </div>
          <div>
-            <label>Imagen</label>
-            <input type="text">
+             <input type="submit" value="Enviar">
          </div>
     </form>
     

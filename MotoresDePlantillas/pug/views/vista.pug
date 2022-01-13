@@ -1,0 +1,24 @@
+extends index.pug
+
+block vista
+   
+    div
+        h1='Vista de Productos'
+        br
+        if productos.length
+            div
+                table
+                    tr
+                        th='Nombre'
+                        th='Precio'
+                        th='Foto'
+                        each producto in productos
+                            tr
+                                td=producto.nombre
+                                td=producto.precio
+                                td
+                                    img(width="50" src=producto.imagen alt="not found")
+        else
+            h3='No se encontraron productos'
+        br
+        a(href="/" type="button")='Cargar un nuevo producto'

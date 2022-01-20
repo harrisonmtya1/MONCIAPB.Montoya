@@ -29,7 +29,7 @@ socket.on("mensajes", mensajes=>{
 function crearMensaje(mensajes){
     return mensajes.map(mensaje=>{
          return(`<div>
-         <p>${mensaje.email}</p>
+         <p><b style="color:blue">${mensaje.email}</b></p>
          <p>${mensaje.mensaje}</p>
          </div>`)
      })

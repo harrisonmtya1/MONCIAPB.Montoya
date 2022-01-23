@@ -31,6 +31,7 @@ function crearMensaje(mensajes){
          return(`<div>
          <p>${mensaje.email}</p>
          <p>${mensaje.mensaje}</p>
+         <p>${mensaje.fecha}</p>
          </div>`)
      })
 }
@@ -49,6 +50,7 @@ const formulariochat = document.getElementById('formulariochat')
 formulariochat.addEventListener('submit', e => {
     e.preventDefault()
     const mensaje = {
+        fecha: new Date().toLocaleString(),
         email: formulariochat[0].value,
         mensaje: formulariochat[1].value,
     

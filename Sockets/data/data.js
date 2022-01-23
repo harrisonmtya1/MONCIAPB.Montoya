@@ -1,3 +1,5 @@
+const {promises:fs}= require('fs');
+
 class data {
   constructor() {
       this.productos = []

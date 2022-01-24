@@ -17,14 +17,26 @@ class data {
      
   }
 
-  listarMensajes() {
-    return this.mensajes
+  async listarMensajes() {
+    try {
+        const msj = await fs.readFile("./mensajes.json", 'utf-8')
+        return JSON.parse(msj)
+    } catch (error) {
+        return []
+    }
 }
 
-guardarMensaje(mensaje) {
+async guardarMensaje(mensaje) {
     
     this.mensajes.push(mensaje)
     console.log(this.mensajes)
+    try {
+        await fs.writeFile("./mensajes.json", JSON.stringify(this.mensajes, null, 2))
+    } catch (error) {
+        throw new Error(`Error al guardar: ${error}`)
+    }
+    
+
     
 }
 

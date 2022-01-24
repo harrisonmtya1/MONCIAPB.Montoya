@@ -29,9 +29,9 @@ socket.on("mensajes", mensajes=>{
 function crearMensaje(mensajes){
     return mensajes.map(mensaje=>{
          return(`<div>
-         <p><b style="color:blue">${mensaje.email}</b></p>
-         <p>${mensaje.mensaje}</p>
-         <p>${mensaje.fecha}</p>
+         <p style="margin-bottom:0"><b style="color:blue">${mensaje.email}</b></p>
+         <p style="display:inline">${mensaje.mensaje}</p>
+         <p style="display:inline">${mensaje.fecha}</p>
          </div>`)
      })
 }

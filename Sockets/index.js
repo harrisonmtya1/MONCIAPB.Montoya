@@ -12,7 +12,7 @@ const data = new Datos();
 
 const PORT=8080;
 
-io.on("connection",socket=>{
+io.on("connection", async socket=>{
    console.log("un usuario conectado");
 
    socket.emit("productos", data.listar());
@@ -22,11 +22,11 @@ io.on("connection",socket=>{
       io.sockets.emit('productos', data.listar());
   })
 
-  socket.emit("mensajes", data.listarMensajes());
+  socket.emit("mensajes", await data.listarMensajes());
 
-  socket.on("enviarMensaje", mensaje=>{
-     data.guardarMensaje(mensaje);
-     io.sockets.emit("mensajes", data.listarMensajes())
+  socket.on("enviarMensaje", async mensaje=>{
+     await data.guardarMensaje(mensaje);
+     io.sockets.emit("mensajes", await data.listarMensajes())
   } )
 })
 

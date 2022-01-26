@@ -50,7 +50,7 @@ const formulariochat = document.getElementById('formulariochat')
 formulariochat.addEventListener('submit', e => {
     e.preventDefault()
     const mensaje = {
-        fecha: new Date().toLocaleString(),
+        
         email: formulariochat[0].value,
         mensaje: formulariochat[1].value,
     

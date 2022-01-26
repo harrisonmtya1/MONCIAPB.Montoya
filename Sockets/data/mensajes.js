@@ -1,22 +1,12 @@
 const {promises:fs}= require('fs');
 
-class data {
+class Mensajes {
   constructor() {
-      this.productos = []
+      
       this.mensajes=[]
  }
 
-  listar() {
-      return this.productos
-  }
-
-  guardar(prod) {
-      
-      this.productos.push(prod)
-      console.log(this.productos)
-     
-  }
-
+  
   async listarMensajes() {
     try {
         const msj = await fs.readFile("./mensajes.json", 'utf-8')
@@ -27,10 +17,10 @@ class data {
 }
 
 async guardarMensaje(mensaje) {
-    
-    this.mensajes.push(mensaje)
-    console.log(this.mensajes)
     try {
+        const msj = await fs.readFile("./mensajes.json", 'utf-8')
+        this.mensajes=JSON.parse(msj)
+        this.mensajes.push(mensaje)
         await fs.writeFile("./mensajes.json", JSON.stringify(this.mensajes, null, 2))
     } catch (error) {
         throw new Error(`Error al guardar: ${error}`)
@@ -43,4 +33,4 @@ async guardarMensaje(mensaje) {
 
 }
 
-module.exports = data
+module.exports = Mensajes

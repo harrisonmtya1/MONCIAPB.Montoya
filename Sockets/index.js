@@ -4,10 +4,12 @@ const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
-const Datos = require('./data/data');
+const Mensajes = require('./data/mensajes');
+const Productos= require('./data/productos')
 
 
-const data = new Datos();
+const objMensaje = new Mensajes();
+const objProductos= new Productos();
 
 
 const PORT=8080;
@@ -15,18 +17,19 @@ const PORT=8080;
 io.on("connection", async socket=>{
    console.log("un usuario conectado");
 
-   socket.emit("productos", data.listar());
+   socket.emit("productos", objProductos.listar());
 
    socket.on('actualizar', producto => {
-      data.guardar(producto)
-      io.sockets.emit('productos', data.listar());
+      objProductos.guardar(producto)
+      io.sockets.emit('productos', objProductos.listar());
   })
 
-  socket.emit("mensajes", await data.listarMensajes());
+  socket.emit("mensajes", await objMensaje.listarMensajes());
 
   socket.on("enviarMensaje", async mensaje=>{
-     await data.guardarMensaje(mensaje);
-     io.sockets.emit("mensajes", await data.listarMensajes())
+     mensaje.fecha= new Date().toLocaleString;
+     await objMensaje.guardarMensaje(mensaje);
+     io.sockets.emit("mensajes", await objMensaje.listarMensajes())
   } )
 })
 

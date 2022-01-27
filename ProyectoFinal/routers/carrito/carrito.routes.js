@@ -10,11 +10,9 @@ rutaCarrito.use(express.json());
 rutaCarrito.use(bodyParser.urlencoded({ extended: false }));
 
 rutaCarrito.post("/",async (req,res)=>{
-     const {id,timestamp,productos}= req.body
+     const {timestamp,productos}= req.body
      let carritos=  await leerArchivo();
-     let carrito={id,timestamp,productos}
-     console.log(carritos)
-     console.log(carrito)
+     let carrito={id:carritos.length + 1,timestamp,productos}
      carritos.push(carrito)
      await escribirArchivo(carritos)
      res.send("ok")

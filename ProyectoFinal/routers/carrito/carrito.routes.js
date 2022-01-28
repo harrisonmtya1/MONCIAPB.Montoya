@@ -18,6 +18,34 @@ rutaCarrito.post("/",async (req,res)=>{
      res.send("ok")
 })
 
+rutaCarrito.delete("/:id",async (req,res)=>{
+    const {id}= req.params
+    let carritos=  await leerArchivo();
+    const carrito= carritos.find(carrito=> carrito.id===+id)
+    if(!carrito){
+        return res.status(404).json(`Carrito con id:${id}, no encontrado`)
+    }
+    let index = carritos.findIndex(carrito=> carrito.id=== +id)
+    carritos.splice(index,1)
+    await escribirArchivo(carritos)
+    res.send("ok")
+})
+
+rutaCarrito.get("/:id/productos", async(req,res)=>{
+    const {id}= req.params
+    let carritos=  await leerArchivo();
+    const carrito= carritos.find(carrito=> carrito.id===+id)
+    res.json(carrito.productos)
+})
+
+rutaCarrito.post("/:id/productos",(req,res)=>{
+    
+})
+
+rutaCarrito.delete(":id/productos/:id_prod",(req,res)=>{
+    
+})
+
 async function leerArchivo(){
     const carritos=await fs.readFile("./carritos.json","utf-8")
     return JSON.parse(carritos)
